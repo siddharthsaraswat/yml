@@ -1,0 +1,6 @@
+---
+- name: calander
+  hosts: all
+  tasks: 
+  - debug:
+     var: cal

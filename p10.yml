@@ -1,0 +1,9 @@
+---
+- name: install ngnix server through variable defined 
+  hosts: all
+  vars:
+    pkkg: nginx
+  tasks:
+   - yum:
+      name: "{{pkkg}}"
+      state: present

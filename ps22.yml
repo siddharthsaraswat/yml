@@ -1,0 +1,12 @@
+---
+- name: using of loops in ansible
+  hosts: all
+  tasks: 
+   - name: ansible facts
+     yum:
+       name: "{{ item }}"
+       state: present
+     loop:
+          - httpd
+          - telnet
+          - lynx

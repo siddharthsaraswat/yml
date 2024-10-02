@@ -1,0 +1,33 @@
+---
+- name: configer web server and start "{{pkg}}" web page with index.html 
+  hosts: dev
+  vars:
+    pkg: httpd
+    pkg1: http 
+  tasks:
+  - name: install "{{pkg}}"
+    yum: 
+      name: "{{pkg}}"
+      state: present
+  - name: copy this and start a web page
+    copy:
+      src: /etc/ansible/ramu.html
+      dest: /var/www/html/index.html
+  - name: firewall enable and running
+    service: 
+      name: firewalld
+      enabled: true
+      state: started
+  - name: firewall permittes access and running
+    firewalld:
+       service: "{{pkg1}}"
+       permanent: true
+       state: enabled
+       immediate: yes
+  - name: "{{pkg}} enable & running" #"{{pkg}}"
+    service: 
+     name: "{{pkg}}"
+     enabled: true
+     state: started
+      
+

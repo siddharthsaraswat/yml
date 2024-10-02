@@ -1,0 +1,12 @@
+---
+- name: check status of a service then restart other service
+  hosts: all
+  tasks:     
+    - name: gather facts 
+      ansible.builtin.service_facts:
+    - name: need to check postfix is running 
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
+      when:
+        ansible_facts.services: name == ['postfix'].state == 'running'

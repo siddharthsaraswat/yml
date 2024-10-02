@@ -1,0 +1,8 @@
+---
+- name: remove httpd
+  hosts: all
+  tasks:
+    - name: remove package
+      yum:
+        name: httpd
+        state: absent

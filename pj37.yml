@@ -1,0 +1,8 @@
+---
+- name: usinf j2 template
+  hosts: all
+  tasks:
+   - name: update hosts file
+     template:
+          src: 1.j2
+          dest: /tmp/host

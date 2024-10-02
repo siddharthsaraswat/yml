@@ -1,0 +1,20 @@
+---
+- name: create user without help of vars just loop and delete all of them one by one
+  hosts: all
+  tasks:
+    - name: user creation
+      user:
+        name: "{{ item }}"
+        state: present
+      loop:
+         - userd1lp
+         - userd2lp
+         - userd3lp
+    - name: user absent
+      user:         
+        name: "{{ item }}"
+        state: absent
+      loop:
+         - userd1lp
+         - userd2lp
+         - userd3lp  

@@ -1,0 +1,12 @@
+---
+- name: Install postfix service
+  hosts: 192.168.1.9
+  tasks:
+    - name: install yum
+      command: df -BM /
+      register: ds
+    - name: install postfix
+      yum:
+         name: postfix
+         state: present
+      when: ds | int <= 2912

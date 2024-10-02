@@ -1,0 +1,13 @@
+---
+- name: install services 
+  hosts: all
+  vars:
+    pkg:
+      - httpd
+      - maven
+      - docker  
+  tasks: 
+    - name: "{{pkg}}"
+      yum:
+        name: "{{pkg}}"
+        state: present

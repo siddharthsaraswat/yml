@@ -1,0 +1,14 @@
+---
+- hosts: all
+  vars:
+    name:
+      - sid:
+          address: bkn
+          age : 28
+      - hari:
+          address: baikunth
+          age: 5500
+  tasks: 
+   - name: print details
+     debug:
+       var: name[0]['age']

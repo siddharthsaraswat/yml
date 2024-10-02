@@ -1,0 +1,12 @@
+---
+- name: postfix started then start httpd
+  hosts: all
+  tasks:
+   - name: check status of postfix
+     command: systemctl disable postfix
+     register: result
+   - name: condition
+     service:
+       name: httpd
+       state: restarted
+     when: result.rc == "0"

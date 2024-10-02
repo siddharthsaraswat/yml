@@ -1,0 +1,14 @@
+---
+- name: condition apply
+  hosts: all
+  tasks:
+    - name: need to install package in  fedora rhel and other red hat associate
+      yum:
+        name: httpd
+        state: present
+      when: 
+         (ansible_os_family == "RedHat" and ansible_distribution_major_version == "7")
+         or
+         (ansible_os_family == "Fedora" and  ansible_distribution_major_version == "28")
+
+

@@ -1,0 +1,15 @@
+---
+- name: use of loop and print
+  hosts: all
+  tasks:
+   - name: print task with the help of eco
+     shell: "echo this is my item {{ item }}"
+     loop:
+        - one
+        - two
+     register: echo_result
+   - name: show result
+     debug:
+       msg: "{{ item.stdout }}"
+     loop:
+       "{{ echo_result.results }}"

@@ -1,0 +1,10 @@
+---
+- name: copy data from ip to ip
+  hosts: 192.168.1.13
+  become: true  
+  tasks:
+   - name: copy data from /home/index.html 
+     fetch:
+       src: /home/index.html
+       dest: /var/www/html/index.html
+     delegate_to: 192.168.1.21

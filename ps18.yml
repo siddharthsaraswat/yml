@@ -1,0 +1,14 @@
+---
+- name: install and run
+  become: true  
+  hosts: all
+  tasks:
+    - name: install apache
+      yum: 
+        name: htpt
+        state: preset
+      ignore_errors: yes      
+    - name: start apache
+      service:
+        name: httpd
+        state: started

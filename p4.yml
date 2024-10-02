@@ -1,0 +1,5 @@
+---
+- name: hola hola mola mola
+  hosts: all
+  tasks:  
+    - command: uptime

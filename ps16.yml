@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+    - name: install httpd and run web server
+      yum:
+        name: httpd
+        state: present
+    - name: copy index.html to all other machine
+      copy:
+        content: "welcome to test index file"
+        dest: /var/www/html/index.html
+    - name: restart service
+      service:
+        name: httpd
+        enabled: true
+        state: started
+    - name: stop fire wall
+      service:
+        name: firewalld
+        state: stopped 

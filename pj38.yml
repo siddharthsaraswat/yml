@@ -1,0 +1,13 @@
+---
+- name: config file using jinga 
+  hosts: all
+  vars:
+     - ssh_port: 22
+     - root_allowed: false
+     - password_allowed: false  
+  tasks:
+    - name: update ssh file
+      template:
+          src: 2.j2
+          dest: /tmp/new.conf
+

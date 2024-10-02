@@ -1,0 +1,8 @@
+---
+- name: user creating with host variable defined in host file
+  hosts: all
+  tasks:
+    - name: cresate
+      user:
+        name: "{{ i_p }}"
+        state: present

@@ -1,0 +1,13 @@
+---
+- name: include vault
+  hosts: all   
+  vars_files:
+         - soft.yml   
+  tasks:
+    - name: add user with pass
+      user:
+        name: "{{ username }}"
+        password: "{{ ps }}"  
+        state: present
+          
+          

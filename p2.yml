@@ -1,0 +1,32 @@
+---
+- name: install services 
+  hosts: all
+  tasks: 
+    - name: httpds and firewall
+      yum:
+         name:
+            - httpd
+            - firewalld
+         state: present
+    - name: html page update
+      copy:
+        content: This is my ansible conetent :P
+        dest: /var/www/html/index.html
+    - name: fire wall start
+      service:
+            name: firewalld
+            enabled: true  
+            state: started
+    - name: fire wall acces
+      firewalld:
+           service: http
+           permanent: true
+           state: enabled
+           immediate: yes
+    - name: httpd enable
+      service:
+              name: httpd
+              enabled: true
+              state: started
+          
+

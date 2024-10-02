@@ -1,0 +1,30 @@
+---
+- name: configer web server httpd and start a web page with index.html
+  hosts: dev
+  tasks:
+  - name: install httpd
+    yum: 
+      name: httpd
+      state: present
+  - name: copy this and start a web page
+    copy:
+      src: /etc/ansible/ramu.html
+      dest: /var/www/html/index.html
+  - name: firewall enable and running
+    service: 
+      name: firewalld
+      enabled: true
+      state: started
+  - name: firewall permittes access and running
+    firewalld:
+       service: http
+       permanent: true
+       state: enabled
+       immediate: yes
+  - name: httpd enable & running
+    service: 
+     name: httpd
+     enabled: true
+     state: started
+      
+

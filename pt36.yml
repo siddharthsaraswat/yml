@@ -1,0 +1,21 @@
+---
+- name: use of tag in this khel
+  hosts: all
+  tasks:
+    - name: 1st group tag
+      yum:  
+        name: httpd
+        state: present
+      tags:
+         - 1ne    
+    - name: 2nd group tag
+      user:
+        name: rolu
+        state: present
+      tags:
+         - 2o  
+    - name: 3rd group tag
+      command: touch /home/ramu/wwo
+      tags:
+         - 3ree
+

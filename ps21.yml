@@ -1,0 +1,8 @@
+---
+- name: ipv4 print through ansible facts
+  hosts: all
+  gather_facts: yes
+  tasks:
+   - name: gather ansible facts and print ip
+     debug:
+       var: ansible_default_ipv4.address

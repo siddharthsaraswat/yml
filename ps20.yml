@@ -1,0 +1,7 @@
+---
+- name: hostname print through ansible facts
+  hosts: all
+  tasks:
+   - name: gather ansible facts
+     debug:
+       var: ansible_hostname

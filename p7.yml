@@ -1,0 +1,10 @@
+---
+- name: install services 
+  hosts: all
+  vars_files: 
+         - gdv1.yml
+  tasks: 
+    - name: "{{pkg}}"
+      yum:
+        name: "{{pkg}}"
+        state: present

@@ -1,0 +1,14 @@
+---
+- name: using of loops in ansible
+  hosts: all
+  vars:
+    pkg:
+      - httpd
+      - telnet
+      - lynx
+  tasks:
+      - name: install software pakages through loop and declaring variable as pkg
+        yum: 
+         name: "{{ item }}"
+         state: present
+        loop: "{{ pkg }}"  

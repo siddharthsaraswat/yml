@@ -1,0 +1,10 @@
+---
+- name: print result of a command
+  hosts: all
+  tasks:
+    - name:
+      command: cal
+      register: result
+    - name: result to display after we provide a variable
+      debug: 
+        var:  result    

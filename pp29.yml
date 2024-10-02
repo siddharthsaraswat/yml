@@ -1,0 +1,10 @@
+---
+- name: print calander through loop
+  hosts: all
+  tasks:
+    - name: date
+      command: cal
+      register: cal_result
+    - name: print rtesult
+      debug: 
+       var: cal_result

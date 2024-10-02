@@ -1,0 +1,9 @@
+---
+- name: creating a file through global declared varialble
+  hosts: all
+  vars_files: gdv1.yml
+  tasks:
+      - name: crating file "{{fn}}"
+        file: 
+          path: /home/ramu/ "{{fn}}"
+          state: touch

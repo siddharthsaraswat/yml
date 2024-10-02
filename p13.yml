@@ -1,0 +1,9 @@
+---
+- name: list of software for new n1
+  hosts: 192.168.1.11
+  tasks:
+   - name: download list of application available for this set of users
+     yum:
+       name: "{{n1soft}}"
+       state: present
+

@@ -1,0 +1,13 @@
+---
+- name: play to check var prompt
+  hosts: all
+  vars_prompt:
+    - name: pkg1
+      prompt: Bonjor, What you request to be installed in your machine?
+      private: no
+  tasks:
+    - name: installing package requested by user
+
+      yum:
+       name: "{{pkg1}}"
+       state: present

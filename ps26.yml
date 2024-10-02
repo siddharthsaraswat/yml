@@ -1,0 +1,14 @@
+---
+- name: using of loops in ansible to start service
+  hosts: all
+  vars:
+    pkg:
+      - httpd
+      - telnet
+      - lynx
+  tasks:
+      - name: start service in ansible loops
+        service: 
+         name: "{{ item }}"
+         state: started
+        loop: "{{ pkg }}"  
