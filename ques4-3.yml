@@ -1,0 +1,16 @@
+---
+- name: postfix install only if 300mb left in /
+  hosts: all
+  remote_user: ansi
+  become_method: sudo
+  become: true
+  tasks:
+    - name: checking mb
+      debug:
+         var: ansible_memtotal_mb
+      register: result
+    - name: if yes installing
+      yum:
+        name: postfix
+        state: present
+      when: result | int <= 1636

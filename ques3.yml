@@ -1,0 +1,7 @@
+---
+- name: using debug and ansible facts to check the memory of / in client machine
+  hosts: all
+  tasks:
+    - name: memory
+      debug:
+        var: ansible_memtotal_mb

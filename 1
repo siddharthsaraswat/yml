@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - command: cal
+      register: result
+      debug:
+         var: result

@@ -1,0 +1,10 @@
+---
+- name: stdout work
+  hosts: all
+  tasks:
+    - name: cal result
+      command: cal
+      register: result
+    - name: printing result 
+      debug:
+         var: result

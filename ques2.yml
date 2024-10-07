@@ -1,0 +1,35 @@
+---
+- name: webserve and firewalld
+  hosts: all
+  remote_user: jenkins
+  become_method: sudo
+  become: true
+  vars:
+      pkg: httpd
+  tasks:
+    - name: installing "{{pkg}}"
+      yum: 
+         name: 
+           - "{{pkg}}"
+             #- firewalld
+         state: present
+    - name: copying 
+      copy:
+        content: welcome finally
+        dest: /var/www/html/index.html
+          #- name: enable firewall
+      # service:
+        #name: firewalld
+          #state: started
+          # enabled: true
+          # - name: permit "{{pkg}}"
+          #firewalld:
+          #service: http
+          #permanent: yes
+          #state: enabled
+          #immediate: yes
+    - name: enable "{{pkg}}"
+      service: 
+        name: "{{pkg}}"
+        state: started
+        enabled: true

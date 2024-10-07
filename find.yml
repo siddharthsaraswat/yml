@@ -1,0 +1,13 @@
+---
+- name: to find file
+  hosts: all
+  remote_user: ansi
+  become_method: sudo
+  become: true
+  tasks:
+    - name: find
+      command: find / -name "yehrahi"
+      register: r
+    - debug:
+         var: r.stdout
+

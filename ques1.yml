@@ -1,0 +1,33 @@
+---
+- name: webserve and firewalld
+  hosts: all
+  remote_user: ansi
+  become_method: sudo
+  become: true
+  tasks:
+    - name: installing httpd
+      yum: 
+         name: 
+           - httpd
+           - firewalld
+         state: present
+    - name: copying 
+      copy:
+        content: welcome finally
+        dest: /var/www/html/index.html
+    - name: enable firewall
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+    - name: permit httpd 
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+    - name: enable http
+      service: 
+        name: httpd
+        state: started
+        enabled: true
